@@ -2,6 +2,7 @@ const express = require('express');
 const serialize = require('node-serialize');
 
 const app = express();
+app.use(require('./vulns2'));
 
 const orders = {
   1001: { owner: 'alice', total: 42.50 },

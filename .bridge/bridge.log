@@ -1,0 +1,14 @@
+2026-10-22 16:21:59.9273 CDT [Bridge CLI] INFO: Using cache directory: /Users/bsimpson/blackduck-bridge/bridge-cli-bundle-macos_arm
+2026-10-22 16:21:59.9277 CDT [Bridge CLI] INFO: Checking if workflow "fixpr@latest" can be installed
+2026-10-22 16:22:31.3764 CDT [Bridge CLI] INFO: Updated 83 registry files
+2026-10-22 16:22:31.3766 CDT [Bridge CLI] INFO: Installing workflow "fixpr" version "3.0.177"
+2026-10-22 16:22:31.7398 CDT [Bridge CLI] INFO: Installing adapter "github-pull-request-handler" version "0.2.196"
+2026-10-22 16:22:32.4492 CDT [Bridge CLI] INFO: Installing adapter "gitlab-pull-request-handler" version "0.2.150"
+2026-10-22 16:22:32.9729 CDT [Bridge CLI] INFO: Installing adapter "azure-pull-request-handler" version "0.1.165"
+2026-10-22 16:22:33.5314 CDT [Bridge CLI] INFO: Installing adapter "bitbucket-pull-request-handler" version "0.1.140"
+2026-10-22 16:22:34.1029 CDT [Bridge CLI] INFO: Installing workflow "commenter" version "3.0.148"
+2026-10-22 16:22:34.4539 CDT [Bridge CLI] INFO: Installing adapter "check-pull-request" version "0.3.93"
+2026-10-22 16:22:34.9425 CDT [Bridge CLI] INFO: Installing adapter "github-commenter" version "0.2.162"
+2026-10-22 16:22:35.5468 CDT [Bridge CLI] INFO: Installing adapter "gitlab-commenter" version "0.2.127"
+2026-10-22 16:22:36.0780 CDT [Bridge CLI] INFO: Installing adapter "azure-commenter" version "0.1.161"
+2026-10-22 16:22:36.7093 CDT [Bridge CLI] INFO: Installing adapter "bitbucket-commenter" version "0.1.155"

