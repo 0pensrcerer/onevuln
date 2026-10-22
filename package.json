@@ -1,0 +1,14 @@
+{
+  "name": "onevuln",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Educational demo app with a single exploitable vulnerability flagged by both SAST and SCA on the same code path.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-serialize": "0.0.4"
+  }
+}
