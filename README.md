@@ -1,6 +1,6 @@
 # onevuln
 
-Minimal educational demo: **one vulnerability**, flagged by both SAST and SCA,
+Minimal educational demo: **a few vulnerabilities**, flagged by both SAST and SCA,
 on the exact same code path — built to show an exploitability/reachability
 scanner proving a finding is real.
 
